@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+<extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="%actionSet.label"
+            visible="true"
+            id="ufscar.ems.actionSet">
+         <menu
+               label="EMS"
+               id="emsMenu">
+            <separator
+                  name="emsGroup">
+            </separator>
+         </menu>
+  
+              <action
+               label="Configuration"
+               icon="icons/Computer-icon.png"
+               class="ufscar.ems.actions.ConfigurationAction"
+               tooltip="%action.tooltip.2"
+               menubarPath="emsMenu/emsGroup"
+               toolbarPath="emsGroup"
+               id="ufscar.ems.actions.EmsAction">
+         </action>
+      </actionSet>
+   </extension>
+<extension
+      id="ufscar.ems.markers"
+      name="EMS Problem"
+      point="org.eclipse.core.resources.markers">
+   <super
+         type="org.eclipse.core.resources.textmarker">
+   </super>
+   <super
+         type="org.eclipse.core.resources.problemmarker">
+   </super>
+   <super
+         type="org.eclipse.core.resources.bookmark">
+   </super>
+   <persistent
+         value="true">
+   </persistent>  
+   
+</extension>
+<extension
+      point="org.eclipse.ui.ide.markerResolution">
+   <markerResolutionGenerator
+         class="ufscar.ems.actions.quickfix.MarkerResolutionGenerator"
+         markerType="org.eclipse.core.resources.problemmarker">
+   </markerResolutionGenerator>
+</extension>
+
+
+</plugin>
